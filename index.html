@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-size: 11px;
+            color: #4F5155;
+            margin: 0px;
+            padding: 0px;
+            font-family: verdana, arial, helvetica, sans-serif;
+        }
+
+        h1 {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        ul {
+            list-style-type: square;
+        }
+
+        header {
+            display: grid;
+            grid-template-columns: 1fr;
+            background-color: #D0D0D0;
+            text-align: center;
+            padding: 0 0 2px 0;
+        }
+
+        main {
+            display: grid;
+            grid-template-columns: .9fr;
+            justify-content: center;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2 {
+            background-color: #727EA3;
+            border-right: 1px solid #D0D0D0;
+            border-bottom: 1px solid #D0D0D0;
+            color: #FFFFFF;
+            font-size: 14px;
+            font-weight: bold;
+            margin: 14px 0 4px 0;
+            padding: 1px 10px 1px 10px;
+        }
+
+        /* Вкладка */
+        .tabs {
+            max-width: 100%;
+        }
+
+        .tabs {
+            border: 1px solid lightgray;
+        }
+
+        .tabs__nav {
+            display: flex;
+            flex-wrap: wrap;
+            list-style-type: none;
+            background: #f8f8f8;
+            margin: 0;
+            border-bottom: 1px solid lightgray;
+        }
+
+        .tabs__link {
+            padding: 0.5rem 0.75rem;
+            text-decoration: none;
+            color: black;
+        }
+
+        .tabs__link_active {
+            background: lightgray;
+            cursor: default;
+        }
+
+        .tabs__link:not(.tabs__link_active):hover,
+        .tabs__link:not(.tabs__link_active):focus {
+            background-color: #efefef;
+        }
+
+        .tabs__content {
+            padding: 1rem;
+        }
+
+        .tabs__pane {
+            display: none;
+        }
+
+        .tabs__pane_show {
+            display: block;
+        }
+
+        /* //Вкладка */
+
+        footer {
+            display: grid;
+            grid-template-columns: 1fr;
+            background-color: #F2F2F2;
+            text-align: left;
+            padding: 0 0 20px 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Document</h1>
+    </header>
+    <main>
+
+        <section>
+            <h2>Title</h2>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam commodi, natus hic incidunt error
+                autem, obcaecati beatae expedita distinctio optio deserunt, doloremque nam. Voluptate, officia
+                temporibus! Suscipit odio laborum dolor?
+            </p>
+        </section>
+        <section>
+            <h2>Title</h2>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </section>
+        <section>
+            <h2>Title</h2>
+
+            <div class="tabs">
+                <div class="tabs__nav">
+                    <a class="tabs__link tabs__link_active" href="#content-1">Tab 1</a>
+                    <a class="tabs__link" href="#content-2">Tab 2</a>
+                    <a class="tabs__link" href="#content-3">Tab 3</a>
+                </div>
+                <div class="tabs__content">
+                    <div class="tabs__pane tabs__pane_show" id="content-1">
+                        Content 1...
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur magnam iure vero ut odit
+                            tempore possimus ad beatae excepturi eligendi architecto ab blanditiis eaque veritatis,
+                            quidem similique, ratione minima in?
+                        </p>
+                    </div>
+                    <div class="tabs__pane" id="content-2">
+                        Content 2...
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur magnam iure vero ut odit
+                            tempore possimus ad beatae excepturi eligendi architecto ab blanditiis eaque veritatis,
+                            quidem similique, ratione minima in?
+                        </p>
+                    </div>
+                    <div class="tabs__pane" id="content-3">
+                        Content 3...
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur magnam iure vero ut odit
+                            tempore possimus ad beatae excepturi eligendi architecto ab blanditiis eaque veritatis,
+                            quidem similique, ratione minima in?
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Title</h2>
+            <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Numquam commodi, natus hic incidunt error
+                autem, obcaecati beatae expedita distinctio optio deserunt, doloremque nam. Voluptate, officia
+                temporibus! Suscipit odio laborum dolor?
+            </p>
+        </section>
+        <section>
+            <h2>Title</h2>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <h3>© Copyright</h3>
+        <div>
+            D.F. Dovgal (dovgal.dima.86@gmail.com)<br>
+        </div>
+    </footer>
+
+
+    <script>
+        var $tabs = function (target) {
+            var
+                _elemTabs = (typeof target === 'string' ? document.querySelector(target) : target),
+                _eventTabsShow,
+                _showTab = function (tabsLinkTarget) {
+                    var tabsPaneTarget, tabsLinkActive, tabsPaneShow;
+                    tabsPaneTarget = document.querySelector(tabsLinkTarget.getAttribute('href'));
+                    tabsLinkActive = tabsLinkTarget.parentElement.querySelector('.tabs__link_active');
+                    tabsPaneShow = tabsPaneTarget.parentElement.querySelector('.tabs__pane_show');
+                    // если следующая вкладка равна активной, то завершаем работу
+                    if (tabsLinkTarget === tabsLinkActive) {
+                        return;
+                    }
+                    // удаляем классы у текущих активных элементов
+                    if (tabsLinkActive !== null) {
+                        tabsLinkActive.classList.remove('tabs__link_active');
+                    }
+                    if (tabsPaneShow !== null) {
+                        tabsPaneShow.classList.remove('tabs__pane_show');
+                    }
+                    // добавляем классы к элементам (в завимости от выбранной вкладки)
+                    tabsLinkTarget.classList.add('tabs__link_active');
+                    tabsPaneTarget.classList.add('tabs__pane_show');
+                    document.dispatchEvent(_eventTabsShow);
+                },
+                _switchTabTo = function (tabsLinkIndex) {
+                    var tabsLinks = _elemTabs.querySelectorAll('.tabs__link');
+                    if (tabsLinks.length > 0) {
+                        if (tabsLinkIndex > tabsLinks.length) {
+                            tabsLinkIndex = tabsLinks.length;
+                        } else if (tabsLinkIndex < 1) {
+                            tabsLinkIndex = 1;
+                        }
+                        _showTab(tabsLinks[tabsLinkIndex - 1]);
+                    }
+                };
+
+            _eventTabsShow = new CustomEvent('tab.show', { detail: _elemTabs });
+
+            _elemTabs.addEventListener('click', function (e) {
+                var target = e.target.closest('.tabs__link');
+                // завершаем выполнение функции, если кликнули не по ссылке
+                if (!target) {
+                    return;
+                }
+                // отменяем стандартное действие
+                e.preventDefault();
+                _showTab(target);
+            });
+
+            return {
+                showTab: function (target) {
+                    _showTab(target);
+                },
+                switchTabTo: function (index) {
+                    _switchTabTo(index);
+                }
+            }
+
+        };
+
+        $tabs('.tabs');
+    </script>
+
+
+</body>
+
+</html>
